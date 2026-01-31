@@ -31,11 +31,18 @@
         "underlinedLinks": false,
         "isAnimatedOnScroll": false,
         "isScrollToTopButton": false
-      }
+      },
+      "additionalSetColors": []
     },
     "path": "@PROJECT_PATH@",
     "versionFirst": "6.1.12",
-    "siteFonts": [],
+    "siteFonts": [
+      {
+        "css": "'Inter Tight', sans-serif",
+        "name": "Inter Tight",
+        "url": "https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i"
+      }
+    ],
     "favicon": false,
     "mbrsiteDomain": "8u5r5wvyvx",
     "imageResize": false,
@@ -47,8 +54,9 @@
     "cookiesAlert": false,
     "gdpr": false,
     "witsec-white-label": true,
-    "uniqCompNum": 1,
-    "versionPublish": "6.1.12"
+    "uniqCompNum": 2,
+    "versionPublish": "6.1.12",
+    "screenshot": "screenshot.png"
   },
   "pages": {
     "index.html": {
@@ -64,12 +72,14 @@
         {
           "alias": false,
           "_styles": {
-            "padding-top": "(@paddingTop * 1rem)",
-            "padding-bottom": "(@paddingBottom * 1rem)",
-            "& when (@bg-type = \"color\")": {
-              "background": "@bg-value"
+            "& when not (@fullScreen)": {
+              "padding-top": "(@paddingTop * 1rem)",
+              "padding-bottom": "(@paddingBottom * 1rem)"
             },
-            "& when (@bg-type = \"image\")": {
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            "& when (@bg-type = 'image')": {
               "background-image": "url(@bg-value)"
             },
             ".mbr-fallback-image.disabled": {
@@ -86,142 +96,48 @@
               "& when (@bg-type = 'video')": {
                 "background-image": "url(@fallBackImage)"
               }
-            },
-            "& when (@fullWidth)": {
-              ".container-fluid": {
-                "@media (min-width: 768px)": {
-                  "padding": "0"
-                }
-              }
-            },
-            ".embla__slide": {
-              "display": "flex",
-              "justify-content": "center",
-              "position": "relative",
-              "min-width": "490px",
-              "max-width": "490px",
-              "@media (max-width: 768px)": {
-                "min-width": "100%",
-                "max-width": "100%",
-                "margin-left": "1rem !important",
-                "margin-right": "1rem !important"
-              }
-            },
-            ".embla__button--next, .embla__button--prev": {
-              "display": "flex"
-            },
-            ".mobi-mbri-arrow-next": {
-              "margin-left": "5px"
-            },
-            ".mobi-mbri-arrow-prev": {
-              "margin-right": "5px"
-            },
-            ".embla__button": {
-              "top": "50%",
-              "width": "60px",
-              "height": "60px",
-              "margin-top": "-1.5rem",
-              "font-size": "22px",
-              "border": "2px solid #fff",
-              "border-radius": "50%",
-              "transition": "all 0.3s",
-              "position": "absolute",
-              "display": "flex",
-              "justify-content": "center",
-              "align-items": "center",
-              "& when not (@arrows)": {
-                "display": "none"
-              },
-              "&:disabled": {
-                "cursor": "default",
-                "display": "none"
-              },
-              "&.embla__button--prev": {
-                "left": "0",
-                "margin-left": "2.5rem"
-              },
-              "&.embla__button--next": {
-                "right": "0",
-                "margin-right": "2.5rem"
-              },
-              "@media (max-width: 767px)": {
-                "top": "auto",
-                "bottom": "1rem"
-              }
-            },
-            ".embla": {
-              "position": "relative",
-              "width": "100%"
-            },
-            ".embla__viewport": {
-              "overflow": "hidden",
-              "width": "100%"
-            },
-            ".embla__viewport.is-draggable": {
-              "cursor": "grab"
-            },
-            ".embla__viewport.is-dragging": {
-              "cursor": "grabbing"
-            },
-            "& when (@draggable)": {
-              ".embla__slide a": {
-                "cursor": "grab"
-              },
-              ".embla__slide a:active": {
-                "cursor": "grabbing"
-              }
-            },
-            ".embla__container": {
-              "display": "flex",
-              "user-select": "none",
-              "-webkit-touch-callout": "none",
-              "-khtml-user-select": "none",
-              "-webkit-tap-highlight-color": "transparent"
-            },
-            ".item-menu-overlay": {
-              "border-radius": "2rem"
-            },
-            ".mbr-section-title": {
-              "color": "#232323"
-            },
-            ".mbr-section-subtitle": {
-              "color": "#232323"
-            },
-            ".mbr-box": {
-              "color": "#ffffff"
-            },
-            ".slide-content": {
-              "position": "relative",
-              "border-radius": "4px",
-              "height": "100%",
-              "width": "100%",
-              "display": "flex",
-              "overflow": "hidden",
-              "flex-flow": "column nowrap"
-            },
-            "img, .item-img": {
-              "width": "100%",
-              "& when (@autoSize)": {
-                "height": "(@carouselHeight * 100px)",
-                "object-fit": "cover"
-              }
-            },
-            ".item-wrapper": {
-              "position": "relative"
-            },
-            ".content-head": {
-              "max-width": "800px"
             }
           },
-          "_name": "slider04",
+          "_name": "article11",
           "_sourceTheme": "startm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"slider4 mbr-embla\" group=\"Gallery & Slider\" mbr-class=\"{'mbr-parallax-background':bg.parallax}\" plugins=\"embla\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" name=\"fullWidth\" title=\"Full Width\" checked>\n        <input inline type=\"range\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"6\">\n        <input inline type=\"range\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"6\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showMainTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showMainSubtitle\" checked>\n        <header>Carousel</header>\n        <input type=\"checkbox\" title=\"Autoplay\" name=\"autoplay\" checked>\n        <input type=\"range\" title=\"Interval\" name=\"interval\" min=\"1\" max=\"10\" value=\"5\" step=\"1\" condition=\"autoplay\">\n        <input type=\"checkbox\" title=\"Loop\" name=\"loop\" checked>\n        <input type=\"checkbox\" title=\"Draggable\" name=\"draggable\" checked>\n        <input type=\"checkbox\" name=\"arrows\" title=\"Arrows\" checked>\n        <header>Card</header>\n        <input type=\"range\" name=\"gap\" title=\"Gap\" min=\"0\" max=\"10\" step=\"1\" value=\"1\">\n        <input type=\"checkbox\" name=\"autoSize\" title=\"Auto Size\" checked>\n        <input type=\"range\" name=\"carouselHeight\" title=\"Height\" min=\"1\" max=\"8\" step=\"1\" value=\"4\" condition=\"autoSize\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\" parallax>\n            <input type=\"color\" title=\"Color\" value=\"#edefeb\" selected>\n        </fieldset>\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" checked condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.5\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row mb-5 justify-content-center\" mbr-if=\"showMainTitle || showMainSubtitle\">\n            <div class=\"col-12 content-head\">\n                <h3 class=\"mbr-section-title mbr-fonts-style align-center mb-0\" mbr-theme-style=\"display-2\" mbr-if=\"showMainTitle\" data-app-selector=\".mbr-section-title\">\n                    <b>Fixed-Height Slider</b>\n                </h3>\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4\" mbr-theme-style=\"display-7\" mbr-if=\"showMainSubtitle\" data-app-selector=\".mbr-section-subtitle\">\n                    Carousel with Multiple Items\n                </h5>\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-12\">\n                <div class=\"embla position-relative\" data-loop=\"{{loop}}\" data-auto-play=\"{{autoplay}}\" data-auto-play-interval=\"{{interval}}\" data-draggable=\"{{draggable}}\" data-skip-snaps=\"true\" data-align=\"center\" data-contain-scroll=\"trimSnaps\">\n                    <div class=\"embla__viewport\">\n                        <div class=\"embla__container\">\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                                <div class=\"slide-content\">\n                                    <div class=\"item-img\">\n                                        <div class=\"item-wrapper\">\n                                            <img src=\"../_images/gallery/gallery01.jpg\" alt=\"Mobirise Website Builder\" title>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                                <div class=\"slide-content\">\n                                    <div class=\"item-img\">\n                                        <div class=\"item-wrapper\">\n                                            <img src=\"../_images/gallery/gallery02.jpg\" alt=\"Mobirise Website Builder\" title>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                                <div class=\"slide-content\">\n                                    <div class=\"item-img\">\n                                        <div class=\"item-wrapper\">\n                                            <img src=\"../_images/gallery/gallery03.jpg\" alt=\"Mobirise Website Builder\" title>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                                <div class=\"slide-content\">\n                                    <div class=\"item-img\">\n                                        <div class=\"item-wrapper\">\n                                            <img src=\"../_images/gallery/gallery04.jpg\" alt=\"Mobirise Website Builder\" title>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                                <div class=\"slide-content\">\n                                    <div class=\"item-img\">\n                                        <div class=\"item-wrapper\">\n                                            <img src=\"../_images/gallery/gallery05.jpg\" alt=\"Mobirise Website Builder\" title>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                            <div class=\"slide-content\">\n                                <div class=\"item-img\">\n                                    <div class=\"item-wrapper\">\n                                        <img src=\"../_images/gallery/gallery06.jpg\" alt=\"Mobirise Website Builder\" title>\n                                    </div>\n                                </div>\n                            </div>\n                            </div>\n                            <div class=\"embla__slide slider-image item\" mbr-style=\"{'margin-left': gap + 'rem', 'margin-right': gap + 'rem'}\">\n                            <div class=\"slide-content\">\n                                <div class=\"item-img\">\n                                    <div class=\"item-wrapper\">\n                                        <img src=\"../_images/gallery/gallery07.jpg\" alt=\"Mobirise Website Builder\" title>\n                                    </div>\n                                </div>\n                            </div>\n                            </div>\n                        </div>\n                    </div>\n                    <button class=\"embla__button embla__button--prev\">\n                        <span class=\"mobi-mbri mobi-mbri-arrow-prev\" aria-hidden=\"true\"></span>\n                        <span class=\"sr-only visually-hidden visually-hidden\">Previous</span>\n                    </button>\n                    <button class=\"embla__button embla__button--next\">\n                        <span class=\"mobi-mbri mobi-mbri-arrow-next\" aria-hidden=\"true\"></span>\n                        <span class=\"sr-only visually-hidden visually-hidden\">Next</span>\n                    </button>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
-          "_cid": "v9SCgym7ZX",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"article11\" group=\"Article\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" mbr-class=\"{\n    'mbr-fullscreen': fullScreen,\n    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n       <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"6\" condition=\"fullScreen == false\">\n        <input type=\"range\" name=\"textWidth\" title=\"Width\" min=\"4\" max=\"12\" step=\"1\" value=\"10\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Subtitle\" name=\"showSubtitle\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background1.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#ffeb69\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">        \n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background1.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\">\n    </div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row justify-content-center\">\n            <div class=\"title col-md-12 col-lg-{{textWidth}}\">\n                <h3 class=\"mbr-section-title mbr-fonts-style align-center mt-0 mb-0\" mbr-if=\"showTitle\" data-app-selector=\".mbr-section-title\" mbr-theme-style=\"display-2\">\n                <b>Framing memories</b>\n                </h3>\n                <h4 class=\"mbr-section-subtitle align-center mbr-fonts-style mt-4\" mbr-if=\"showSubtitle\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\">\n                The everlasting charm of photographs\n                </h4>\n                <div class=\"mbr-section-btn align-center mt-4\" mbr-if=\"showButtons\" mbr-buttons mbr-theme-style=\"display-4\">\n                    <a class=\"btn btn-secondary\" href=\"https://mobiri.se\" data-app-placeholder=\"Type Text\">\n                        Learn more\n                    </a>\n                </div>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "v9SG1WobpW",
+          "_anchor": "article11-1",
           "_protectedParams": [],
           "_global": false,
           "_once": false,
-          "_params": {},
-          "_anchor": "slider04-0"
+          "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "background-color": "@bgcolor",
+            "& when (@fullWidth = false)": {
+              "padding-top": "(@paddingTop * 15px)",
+              "padding-bottom": "(@paddingBottom * 15px)"
+            },
+            "@media (max-width: 768px)": {
+              "audio": {
+                "width": "100% !important"
+              }
+            },
+            "audio": {
+              "margin": "auto",
+              "display": "block",
+              "& when (@fullWidth)": {
+                "width": "100% !important"
+              }
+            }
+          },
+          "_name": "design-block",
+          "_customHTML": "<section data-bs-version=\"5.1\" group=\"Images &amp; Videos\">\n\n    <mbr-parameters>\n    <!-- Block parameters controls (Blue \"Gear\" panel) -->\n    <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n    <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"8\" value=\"4\" step=\"1\" condition=\"fullWidth==false\">\n    <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"8\" value=\"4\" step=\"1\" condition=\"fullWidth==false\">\n    <input type=\"text\" title=\"Audio URL or filename\" name=\"audioSrc\" value=\"https://www.w3schools.com/html/horse.ogg\">\n    <input type=\"color\" title=\"Background Color\" name=\"bgcolor\" value=\"#cccccc\" selected=\"\">\n    <!-- End block parameters -->\n    </mbr-parameters>\n\n    <figure class=\"mbr-figure align-center\">\n      <audio controls=\"\">\n        <source src=\"{{ audioSrc }}\" type=\"audio/mpeg\">\n      </audio>\n    </figure>\n</section>",
+          "_cid": "bQ8MEUwlCm",
+          "_anchor": "design-block-bQ8MEUwlCm",
+          "_sourceTheme": "startm5",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
         }
       ]
     }
