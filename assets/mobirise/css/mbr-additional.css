@@ -785,8 +785,8 @@ a {
   transition: outline 0.2s ease-in-out;
 }
 .cid-veZGjqPhdo {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 5rem;
+  padding-bottom: 0rem;
   background-color: #ffffff;
 }
 .cid-veZGjqPhdo .mbr-fallback-image.disabled {
@@ -803,7 +803,7 @@ a {
 }
 .cid-veZI75MJS9 {
   padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-bottom: 0rem;
   background-color: #edefeb;
 }
 .cid-veZI75MJS9 .mbr-fallback-image.disabled {
