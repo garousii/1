@@ -803,13 +803,30 @@ a {
 }
 .cid-veZI75MJS9 {
   padding-top: 6rem;
-  padding-bottom: 0rem;
-  background-color: #edefeb;
+  padding-bottom: 2rem;
+  background-color: #dddddd;
 }
 .cid-veZI75MJS9 .mbr-fallback-image.disabled {
   display: none;
 }
 .cid-veZI75MJS9 .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-veZNWS2EWS {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #ffffff;
+}
+.cid-veZNWS2EWS .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-veZNWS2EWS .mbr-fallback-image {
   display: block;
   background-size: cover;
   background-position: center center;
